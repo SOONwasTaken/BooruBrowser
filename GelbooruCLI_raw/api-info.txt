@@ -1,0 +1,133 @@
+Gelbooru response contains two keys:
+
+    @attributes: 
+        A dictionary containing information
+        about the request.
+
+        ex: {'limit': 10, 'offset': 0, 'count': 2043}
+    
+    post:
+        A dictionary containing posts of length equal
+        to that of 'limit'.
+
+    Each post contains the follwing information:
+
+    'id': 
+        A post's unique identifier
+
+    'created_at': 
+        Date and time information when created 
+    
+    'score': 
+        The amount of upvotes that a post has received
+    
+    'width': 
+        Width of the source image 
+    
+    'height': 
+        Height of the full image
+    
+    'md5': 
+        MD5 hash of the image to ensure legitamacy against potential copies 
+    
+    'directory': 
+        String containing the subdirectories for which the post is contained
+        All images are found on the CDN at img3.gelbooru.com/images/xx/yy where
+        xx/yy are the 2 subdirectories containing the image, formatted as hex.
+
+    'image': 
+        The default file name of the image. Is a string of length 32 formatted
+        in hex. A string that can hold approximately ~3.4e38 unqiue values.
+
+    'rating': 
+        What can be referred to as the 'age rating' of an image. Can be one of 
+        'safe', 'sensitive', 'questionable', or 'explicit'. 
+        
+        Described by Gelbooru as follows:
+
+        — General:
+            G-rated content. Content that is completely safe for work. Nothing 
+            sexualized or inappropriate to view in front of others.
+
+        — Sensitive:
+            Ecchi, sexy, suggestive, or mildly erotic content. Skimpy or 
+            revealing_clothes, swimsuits, underwear, images focused on the breasts 
+            or ass, and any other content that is potentially not safe for work.
+
+        — Questionable:
+            Softcore erotica. Simple nudity or near-nudity, but no explicit sex or 
+            exposed genitals.
+
+        — Explicit:
+            Blatantly sexual content. Explicit sex acts, exposed genitals, and 
+            sexual fluids.        
+
+    'source': 
+        If an image comes from another source, a string will be provided which links
+        to the original post containing this image. Else, an empty string.
+
+    'change': 
+        The Change ID of the post
+
+    'owner':
+        The name of the user that posted this image
+
+    'creator_id':
+        The poster's user ID
+
+    'parent_id': 
+        A number which references the parent post of this post. This is reserved for
+        'child posts', which are posts that are directly linked to other posts. Typically
+        a thread of images (like multiple panels of a doujin), multiple variations or edits
+        of the same image, or simply a collection of closely related images.
+
+        If the post is not a child, then this value is 0.
+
+    'sample':
+        A number referring to the amount of sample images that this post has. A sample
+        is a smaller version of the original image.
+
+    'preview_height':
+        The height of the preview image that is shown in the gallery view when looking
+        at the site.
+
+    'preview_width':
+        The width of the preview image that is shown in the gallery view when looking
+        at the site.
+
+    'tags':
+        A space-separated list containing all of the tags for this image.
+
+    'title': 
+        A string containing the title of the post if it exists, else just an empty string.
+
+    'has_notes':
+        A boolean value indicating if this post has any additional notes.
+
+    'has_comments':
+        A boolean value indicating if any users have left comments on this post.
+
+    'file_url':
+        The CDN link to the original image. Use for requests and saving the full image.
+
+    'preview_url':
+        The CDN link to the thumbnail-sized preview image.
+    
+    'sample_url':  
+        The CDN link to the smaller sample version of the image. Reserved for images that are
+        of higher resolution and are scaled down. Use this if you want to save space.
+    
+    'sample_height':
+        The height of the sample image.
+    
+    'sample_width':
+        The width of the sample image.
+    
+    'status':
+        A string indicating the state of the post. Indicates if post is active or deleted.
+    
+    'post_locked':
+        Indicates if the post is locked and unable to recieve new comments.
+    
+    'has_children':
+        Boolean value indicating if the post is a parent of one or more child posts.
